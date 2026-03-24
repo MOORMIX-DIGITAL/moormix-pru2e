@@ -3,360 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moormix Digital - Catálogo Personalizado</title>
+    <title>Moormix Digital - Catálogo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .option-btn[data-selected="true"] {
-            background-color: #0891b2;
-            color: white;
-            border-color: #0891b2;
-        }
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none; margin: 0; 
-        }
-    </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center cursor-pointer" id="btn-inicio">
-                    <span class="text-2xl font-bold text-cyan-600">MOORMIX</span>
-                    <span class="text-2xl font-light text-gray-500 ml-1">DIGITAL</span>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center cursor-pointer" id="btn-inicio">
+                    <span class="text-3xl font-black text-cyan-600 tracking-tighter">MOORMIX</span>
+                    <span class="text-3xl font-light text-gray-400 ml-1">DIGITAL</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <button id="btn-catalogo" class="text-gray-600 hover:text-cyan-600 font-medium">Catálogo</button>
-                    <button id="btn-nosotros" class="text-gray-600 hover:text-cyan-600 font-medium">Nosotros</button>
-                    <button id="btn-contacto" class="text-gray-600 hover:text-cyan-600 font-medium text-white bg-cyan-600 px-4 py-2 rounded-lg">Contacto</button>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <button id="btn-catalogo" class="text-gray-600 hover:text-cyan-600 font-bold transition">CATÁLOGO</button>
+                    <button id="btn-nosotros" class="text-gray-600 hover:text-cyan-600 font-bold transition">NOSOTROS</button>
+                    <button id="btn-contacto" class="bg-cyan-600 text-white px-6 py-2 rounded-full font-bold hover:bg-cyan-700 transition shadow-lg shadow-cyan-200">CONTACTO</button>
                 </div>
-                <button id="menu-toggle" class="md:hidden text-gray-600"><i class="fas fa-bars text-2xl"></i></button>
+                <button id="menu-toggle" class="md:hidden text-cyan-600 text-2xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-4 space-y-4">
-            <button class="block w-full text-left py-2" onclick="showPage('page-inicio')">Inicio</button>
-            <button class="block w-full text-left py-2" onclick="showPage('page-catalogo')">Catálogo</button>
-            <button class="block w-full text-left py-2" onclick="showPage('page-contacto')">Contacto</button>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-4 shadow-xl">
+            <button id="m-btn-inicio" class="block w-full text-left font-bold text-gray-700">INICIO</button>
+            <button id="m-btn-catalogo" class="block w-full text-left font-bold text-gray-700">CATÁLOGO</button>
+            <button id="m-btn-contacto" class="block w-full text-left font-bold text-cyan-600">CONTACTO</button>
         </div>
     </nav>
 
     <main id="page-inicio" class="content-page">
-        <section class="relative h-[500px] flex items-center justify-center text-center text-white">
-            <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
-            <div class="relative z-20 px-4">
-                <h1 class="text-5xl font-extrabold mb-4">Tecnología a tu Alcance</h1>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">Equipos de última generación con planes de financiamiento directos y personalizados.</p>
-                <button id="btn-ir-catalogo" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105">
-                    VER CATÁLOGO AHORA
-                </button>
+        <div class="relative h-[600px] flex items-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10 opacity-60"></div>
+            <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
+            <div class="relative z-20 max-w-7xl mx-auto px-6 text-white">
+                <h1 class="text-6xl font-black mb-4 leading-tight">TU PRÓXIMO IPHONE<br><span class="text-cyan-400">ESTÁ AQUÍ.</span></h1>
+                <p class="text-xl mb-8 text-gray-200 max-w-xl">Financiamiento directo, sin papeleo excesivo. Estrena hoy mismo con Moormix Digital.</p>
+                <button id="btn-ir-catalogo" class="bg-white text-cyan-600 px-10 py-4 rounded-full font-black text-lg hover:bg-cyan-50 transition transform hover:scale-105 shadow-2xl">EXPLORAR EQUIPOS</button>
             </div>
-        </section>
+        </div>
     </main>
 
-    <main id="page-catalogo" class="content-page hidden max-w-7xl mx-auto px-4 py-10">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-            <h2 class="text-3xl font-bold text-gray-800">Nuestros Equipos</h2>
-            <div class="flex gap-2 w-full md:w-auto">
-                <input type="text" id="search-input" placeholder="Buscar modelo..." class="border p-2 rounded-lg w-full md:w-64 focus:ring-2 focus:ring-cyan-500 outline-none">
-                <select id="sort-order" class="border p-2 rounded-lg outline-none">
-                    <option value="name">Nombre</option>
-                    <option value="price">Menor Precio</option>
+    <main id="page-catalogo" class="content-page hidden max-w-7xl mx-auto px-4 py-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <h2 class="text-4xl font-black text-gray-900 uppercase tracking-tighter">Catálogo <span class="text-cyan-600">Premium</span></h2>
+                <p class="text-gray-500 font-medium">Equipos homologados con garantía total.</p>
+            </div>
+            <div class="flex gap-4 items-center">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="search-input" placeholder="Buscar modelo..." class="pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-2xl w-full md:w-80 focus:ring-2 focus:ring-cyan-500 outline-none transition shadow-sm">
+                </div>
+                <select id="sort-order" class="bg-white border border-gray-200 py-3 px-4 rounded-2xl font-bold text-gray-600 outline-none shadow-sm">
+                    <option value="name">A-Z</option>
+                    <option value="price">PRECIO</option>
                 </select>
             </div>
         </div>
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
     </main>
 
-    <main id="page-contacto" class="content-page hidden max-w-4xl mx-auto px-4 py-20 text-center">
-        <h2 class="text-3xl font-bold mb-6">¿Tienes dudas?</h2>
-        <form id="contact-form" class="bg-white p-8 rounded-xl shadow-lg space-y-4">
-            <input type="text" id="name" placeholder="Tu nombre" required class="w-full border p-3 rounded-lg">
-            <input type="email" id="email" placeholder="Correo electrónico" required class="w-full border p-3 rounded-lg">
-            <textarea id="message" placeholder="Mensaje o sugerencia" class="w-full border p-3 rounded-lg h-32"></textarea>
-            <button type="submit" class="w-full bg-cyan-600 text-white font-bold py-3 rounded-lg hover:bg-cyan-700 transition">Enviar Mensaje</button>
-            <p id="form-message" class="hidden font-medium mt-4"></p>
-        </form>
-    </main>
-
-    <div id="info-modal" class="fixed inset-0 bg-black bg-opacity-70 z-[60] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto relative shadow-2xl">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-black text-3xl z-10">&times;</button>
-            <div id="modal-content-inner" class="p-6 md:p-10">
+    <div id="info-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] w-full max-w-5xl max-h-[95vh] overflow-y-auto relative shadow-2xl">
+            <button id="close-modal" class="absolute top-6 right-6 text-gray-400 hover:text-black text-3xl z-10 transition">&times;</button>
+            
+            <div id="modal-content-inner" class="p-4 md:p-12">
                 </div>
         </div>
     </div>
 
     <script>
         // *************************************************************
-        // * BASE DE DATOS DE PRODUCTOS (CONFIGURACIÓN POR PROVEEDOR)
+        // * PRODUCTOS CON COSTOS PERSONALIZADOS
         // *************************************************************
         const products = [
             {
                 id: 1,
-                name: "iPhone 15 Pro",
-                shortDescription: "Titanio, Chip A17 Pro.",
-                longDescription: "El iPhone 15 Pro es el primer iPhone con diseño de titanio de calidad aeroespacial. El chip A17 Pro ofrece el mejor rendimiento gráfico hasta la fecha.",
-                specs: ["Pantalla Super Retina XDR 6.1\"", "Chip A17 Pro", "Cámara Pro 48MP", "USB-C"],
-                image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80",
+                name: "iPhone 15 Pro Max",
+                shortDescription: "El titanio llega al iPhone.",
+                longDescription: "Diseño robusto y ligero de titanio de calidad aeroespacial. Botón de Acción personalizable. El sistema de cámaras más potente en un iPhone.",
+                specs: ["Pantalla 6.7\" ProMotion", "Chip A17 Pro", "Cámara Triple 48MP", "USB-C 3.0"],
+                image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000",
                 variants: [
                     { 
-                        almacenamiento: "128GB", ram: "8GB", color: "Titanio", stock: 5,
-                        costoProveedor: 850.00, // <--- TU COSTO
-                        margenContado: 1.15,     // <--- 15% de ganancia
-                        tasaAnual: 0.25          // <--- 25% de interés anual
+                        almacenamiento: "256GB", ram: "8GB", color: "Titanio Natural", stock: 4,
+                        costoProveedor: 1050.00, 
+                        margenContado: 1.15, // 15% ganancia
+                        tasaAnual: 0.28    // 28% interés anual
                     },
                     { 
-                        almacenamiento: "256GB", ram: "8GB", color: "Azul", stock: 3,
-                        costoProveedor: 950.00,
+                        almacenamiento: "512GB", ram: "8GB", color: "Titanio Negro", stock: 2,
+                        costoProveedor: 1250.00,
                         margenContado: 1.15,
-                        tasaAnual: 0.22 
+                        tasaAnual: 0.25
                     }
                 ]
             },
             {
                 id: 2,
-                name: "Samsung Galaxy S24 Ultra",
-                shortDescription: "Galaxy AI ha llegado.",
-                longDescription: "Potencia tu creatividad y productividad con la inteligencia artificial integrada. Cámara de 200MP y S-Pen incluido.",
-                specs: ["Pantalla Dynamic AMOLED 6.8\"", "Snapdragon 8 Gen 3", "S-Pen Integrado", "Batería 5000mAh"],
-                image: "https://images.unsplash.com/photo-1707230559036-39149298586d?auto=format&fit=crop&q=80",
+                name: "Samsung S24 Ultra",
+                shortDescription: "Inteligencia Artificial Galaxy.",
+                longDescription: "Marco de titanio, pantalla plana y el rendimiento que necesitas para jugar y crear contenidos.",
+                specs: ["Pantalla 6.8\" QHD+", "Snapdragon 8 Gen 3", "200MP Camera", "S-Pen"],
+                image: "https://images.unsplash.com/photo-1707230559036-39149298586d?q=80&w=1000",
                 variants: [
                     { 
-                        almacenamiento: "256GB", ram: "12GB", color: "Negro", stock: 8,
-                        costoProveedor: 900.00,
-                        margenContado: 1.12,    // <--- Margen diferente para Samsung
-                        tasaAnual: 0.30         // <--- Tasa diferente
+                        almacenamiento: "256GB", ram: "12GB", color: "Titanium Gray", stock: 6,
+                        costoProveedor: 980.00,
+                        margenContado: 1.12, 
+                        tasaAnual: 0.30 
                     }
                 ]
             }
         ];
 
-        // *************************************************************
-        // * LÓGICA DE CÁLCULO FINANCIERO PERSONALIZADO
-        // *************************************************************
-        function calculatePayment(precioBase, meses, frecuencia, tasaAnual) {
-            // Interés simple aplicado al total (puedes cambiar a interés compuesto si prefieres)
-            const interesTotal = precioBase * (tasaAnual * (meses / 12));
-            const totalFinanciado = precioBase + interesTotal;
-            
-            let divisor = 1;
-            if (frecuencia === 'quincenal') divisor = 2;
-            if (frecuencia === 'semanal') divisor = 4;
-            
-            const totalPagos = meses * divisor;
-            const valorCuota = totalFinanciado / totalPagos;
-
+        // Lógica de cálculo
+        function calculatePayment(amount, months, frequency, annualRate) {
+            const interest = amount * (annualRate * (months / 12));
+            const total = amount + interest;
+            let divider = frequency === 'quincenal' ? 2 : (frequency === 'semanal' ? 4 : 1);
+            const totalPayments = months * divider;
             return {
-                totalAmountDue: totalFinanciado.toFixed(2),
-                installmentAmount: valorCuota.toFixed(2),
-                totalPayments: totalPagos,
-                annualRate: (tasaAnual * 100).toFixed(0)
+                totalAmountDue: total.toFixed(2),
+                installmentAmount: (total / totalPayments).toFixed(2),
+                totalPayments: totalPayments
             };
         }
 
-        // *************************************************************
-        // * RENDERIZADO Y NAVEGACIÓN
-        // *************************************************************
-        function showPage(pageId) {
-            document.querySelectorAll('.content-page').forEach(p => p.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-            window.scrollTo(0,0);
-        }
+        let currentPaymentMode = 'contado';
 
         function renderProducts(items) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = items.map(p => {
-                const mainVariant = p.variants[0];
-                const precioContado = (mainVariant.costoProveedor * mainVariant.margenContado).toFixed(2);
+                const v = p.variants[0];
+                const price = (v.costoProveedor * v.margenContado).toFixed(2);
                 return `
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer border border-gray-100" onclick="openModal(${p.id})">
-                    <img src="${p.image}" class="h-56 w-full object-cover">
-                    <div class="p-5">
-                        <h3 class="font-bold text-lg text-gray-800">${p.name}</h3>
-                        <p class="text-gray-500 text-sm mb-4">${p.shortDescription}</p>
+                <div class="group bg-white rounded-[2rem] p-4 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer border border-gray-100" onclick="openModal(${p.id})">
+                    <div class="overflow-hidden rounded-[1.5rem] mb-4 h-64">
+                        <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="px-2">
+                        <h3 class="font-black text-xl text-gray-800 uppercase tracking-tighter">${p.name}</h3>
+                        <p class="text-gray-400 text-sm font-bold mb-4">${p.shortDescription}</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-cyan-600 font-extrabold text-xl">$${precioContado}</span>
-                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Disponible</span>
+                            <span class="text-2xl font-black text-cyan-600">$${price}</span>
+                            <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
+                                <i class="fas fa-plus"></i>
+                            </div>
                         </div>
                     </div>
                 </div>`;
             }).join('');
         }
 
-        let currentPaymentMode = 'contado';
-
         function openModal(productId) {
             const product = products.find(p => p.id === productId);
-            const initialVariant = product.variants[0];
-            const uniqueAlmacenamiento = [...new Set(product.variants.map(v => v.almacenamiento))];
-            const uniqueRAM = [...new Set(product.variants.map(v => v.ram))];
-            const uniqueColor = [...new Set(product.variants.map(v => v.color))];
-
             const modalContent = document.getElementById('modal-content-inner');
+            const uniqueAlm = [...new Set(product.variants.map(v => v.almacenamiento))];
+            const uniqueCol = [...new Set(product.variants.map(v => v.color))];
+
             modalContent.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div>
-                        <img id="main-modal-img" src="${product.image}" class="w-full rounded-2xl shadow-lg mb-4 h-[400px] object-cover">
-                        <div class="flex space-x-2 overflow-x-auto pb-2">
-                            <img src="${product.image}" class="w-20 h-20 rounded-lg border-2 border-cyan-500 cursor-pointer object-cover">
-                        </div>
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="w-full lg:w-1/2">
+                        <img id="modal-main-img" src="${product.image}" class="w-full rounded-[2.5rem] shadow-2xl h-[500px] object-cover border-8 border-gray-50">
                     </div>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-2">${product.name}</h2>
-                        <div class="flex items-center space-x-2 mb-4">
-                            <span class="text-sm text-gray-500">Stock: <span id="modal-stock" class="font-bold text-gray-700">${initialVariant.stock}</span></span>
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                        <div class="mb-6">
+                            <span class="bg-cyan-100 text-cyan-600 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Disponible</span>
+                            <h2 class="text-5xl font-black text-gray-900 mt-2 tracking-tighter uppercase">${product.name}</h2>
+                            <p class="text-gray-500 font-medium mt-2">Stock: <span id="modal-stock" class="text-gray-900">0</span> unidades</p>
                         </div>
 
-                        <div class="space-y-4 mb-6">
-                            <div>
-                                <p class="text-sm font-bold text-gray-600 mb-2">MODALIDAD DE PAGO</p>
-                                <div class="flex gap-2">
-                                    <button class="payment-mode-btn bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold" data-payment-mode="contado">CONTADO</button>
-                                    <button class="payment-mode-btn bg-white border border-gray-300 px-4 py-2 rounded-lg text-sm font-bold" data-payment-mode="plazos">A PLAZOS (CRÉDITO)</button>
+                        <div class="flex gap-3 mb-8 bg-gray-100 p-1.5 rounded-2xl w-fit">
+                            <button class="payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300" data-payment-mode="contado">CONTADO</button>
+                            <button class="payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300" data-payment-mode="plazos">PLAZOS</button>
+                        </div>
+
+                        <div id="financing-options" class="hidden grid grid-cols-2 gap-4 mb-8 bg-gray-50 p-6 rounded-[2rem] border border-gray-200">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Frecuencia</label>
+                                <select id="pay-freq" class="w-full bg-white border-none rounded-xl p-3 text-sm font-bold shadow-sm outline-none">
+                                    <option value="mensual">Mensual</option>
+                                    <option value="quincenal">Quincenal</option>
+                                    <option value="semanal">Semanal</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Plazo</label>
+                                <select id="pay-months" class="w-full bg-white border-none rounded-xl p-3 text-sm font-bold shadow-sm outline-none">
+                                    <option value="3">3 Meses</option>
+                                    <option value="6" selected>6 Meses</option>
+                                    <option value="12">12 Meses</option>
+                                </select>
+                            </div>
+                            <div class="col-span-2 bg-cyan-600 text-white p-4 rounded-2xl flex justify-between items-center shadow-lg shadow-cyan-200 mt-2">
+                                <div>
+                                    <p class="text-[10px] font-bold opacity-80 uppercase">Cuota Estimada</p>
+                                    <p id="calc-cuota" class="text-2xl font-black">$0.00</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-bold opacity-80 uppercase">Total Pagos</p>
+                                    <p id="calc-total-pagos" class="text-xl font-black">0</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="financing-options" class="hidden bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300">
-                                <div class="grid grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label class="text-xs font-bold text-gray-500 uppercase">Frecuencia</label>
-                                        <select id="payment-frequency" class="w-full bg-white border p-2 rounded-lg text-sm">
-                                            <option value="mensual">Mensual</option>
-                                            <option value="quincenal">Quincenal</option>
-                                            <option value="semanal">Semanal</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label class="text-xs font-bold text-gray-500 uppercase">Meses</label>
-                                        <select id="payment-months" class="w-full bg-white border p-2 rounded-lg text-sm">
-                                            <option value="3">3 Meses</option>
-                                            <option value="6" selected>6 Meses</option>
-                                            <option value="12">12 Meses</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="text-center bg-cyan-50 p-3 rounded-lg border border-cyan-100">
-                                    <p class="text-xs text-cyan-700 font-bold uppercase">Tu Cuota Estimada</p>
-                                    <p id="financing-installment-amount" class="text-2xl font-black text-cyan-600">$0.00</p>
-                                    <p class="text-[10px] text-cyan-500"><span id="financing-total-payments">0</span> pagos totales</p>
-                                </div>
+                        <div class="space-y-6 mb-8">
+                            ${uniqueAlm.length > 1 ? `<div><p class="text-xs font-black text-gray-400 mb-3 uppercase tracking-widest">Capacidad</p><div class="flex gap-2">${uniqueAlm.map((a,i)=>`<button class="variant-opt-btn border-2 border-gray-100 px-5 py-2 rounded-xl font-bold text-sm hover:border-cyan-600 transition" data-type="alm" data-val="${a}" data-selected="${i===0}">${a}</button>`).join('')}</div></div>`:''}
+                            ${uniqueCol.length > 1 ? `<div><p class="text-xs font-black text-gray-400 mb-3 uppercase tracking-widest">Color</p><div class="flex gap-2">${uniqueCol.map((c,i)=>`<button class="variant-opt-btn border-2 border-gray-100 px-5 py-2 rounded-xl font-bold text-sm hover:border-cyan-600 transition" data-type="col" data-val="${c}" data-selected="${i===0}">${c}</button>`).join('')}</div></div>`:''}
+                        </div>
+
+                        <div class="border-t pt-6 mb-8">
+                            <p id="price-label" class="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Precio al Contado</p>
+                            <div class="flex items-baseline gap-2">
+                                <span id="modal-price" class="text-5xl font-black text-cyan-600 tracking-tighter">$0.00</span>
+                                <span class="text-gray-400 font-bold text-sm">inc. IVA</span>
                             </div>
                         </div>
 
-                        <div class="space-y-4 mb-6">
-                            ${uniqueAlmacenamiento.length > 1 ? `<div><p class="text-xs font-bold text-gray-500 mb-2">ALMACENAMIENTO</p><div class="flex gap-2">${uniqueAlmacenamiento.map((a, i) => `<button class="option-btn border px-3 py-1 rounded text-sm" data-option-type="almacenamiento" data-option-value="${a}" data-selected="${i===0}">${a}</button>`).join('')}</div></div>` : ''}
-                            ${uniqueColor.length > 1 ? `<div><p class="text-xs font-bold text-gray-500 mb-2">COLOR</p><div class="flex gap-2">${uniqueColor.map((c, i) => `<button class="option-btn border px-3 py-1 rounded text-sm" data-option-type="color" data-option-value="${c}" data-selected="${i===0}">${c}</button>`).join('')}</div></div>` : ''}
-                        </div>
-
-                        <div class="border-t pt-4 mb-6">
-                            <span id="price-label" class="text-sm font-semibold text-gray-700">Precio Total:</span>
-                            <span id="modal-price" class="text-4xl font-extrabold text-cyan-600 block">$0.00</span>
-                        </div>
-
-                        <div class="flex items-center space-x-4">
-                            <div class="flex items-center border rounded-lg">
-                                <button id="qty-minus" class="p-3">-</button>
-                                <input id="qty-input" type="number" value="1" class="w-10 text-center font-bold">
-                                <button id="qty-plus" class="p-3">+</button>
+                        <div class="flex gap-4">
+                            <div class="flex items-center bg-gray-100 rounded-2xl p-1">
+                                <button id="qty-min" class="w-10 h-10 font-bold text-gray-500 hover:text-black">-</button>
+                                <input id="qty-num" type="number" value="1" class="w-12 bg-transparent text-center font-black text-lg outline-none">
+                                <button id="qty-plus" class="w-10 h-10 font-bold text-gray-500 hover:text-black">+</button>
                             </div>
-                            <a id="modal-whatsapp-link" href="#" target="_blank" class="flex-1 bg-green-500 text-white font-bold py-4 rounded-xl text-center hover:bg-green-600 transition shadow-lg">
-                                <i class="fab fa-whatsapp mr-2"></i> COMPRAR AHORA
+                            <a id="wa-btn" href="#" target="_blank" class="flex-1 bg-green-500 text-white font-black py-4 rounded-2xl text-center hover:bg-green-600 transition shadow-xl shadow-green-100 flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-xl"></i> COMPRAR POR WHATSAPP
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 border-t pt-6">
-                    <div class="flex space-x-4 mb-4 border-b">
-                        <button class="tab-btn border-b-2 border-cyan-600 text-cyan-600 pb-2 font-bold uppercase text-sm">Descripción</button>
-                        <button class="tab-btn border-b-2 border-transparent text-gray-400 pb-2 font-bold uppercase text-sm">Especificaciones</button>
+
+                <div class="mt-16 border-t border-gray-100 pt-10">
+                    <div class="flex gap-8 mb-6 border-b border-gray-100">
+                        <button class="tab-btn pb-4 border-b-4 border-cyan-600 text-cyan-600 font-black uppercase tracking-widest text-sm" data-tab="desc">Descripción</button>
+                        <button class="tab-btn pb-4 border-b-4 border-transparent text-gray-400 font-black uppercase tracking-widest text-sm" data-tab="specs">Ficha Técnica</button>
                     </div>
-                    <div id="tab-content" class="text-gray-600 text-sm leading-relaxed">
+                    <div id="tab-pane" class="text-gray-500 font-medium leading-relaxed max-w-3xl">
                         ${product.longDescription}
                     </div>
                 </div>
             `;
 
-            // Vincular eventos del modal
-            setupModalEvents(product);
+            setupModalLogic(product);
             document.getElementById('info-modal').classList.remove('hidden');
-            updateModalUI(product);
         }
 
-        function setupModalEvents(product) {
-            document.querySelectorAll('.payment-mode-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    currentPaymentMode = e.target.getAttribute('data-payment-mode');
-                    document.querySelectorAll('.payment-mode-btn').forEach(b => b.className = "payment-mode-btn bg-white border border-gray-300 px-4 py-2 rounded-lg text-sm font-bold");
-                    e.target.className = "payment-mode-btn bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold";
-                    updateModalUI(product);
+        function setupModalLogic(product) {
+            const updateUI = () => {
+                const alm = document.querySelector('[data-type="alm"][data-selected="true"]')?.dataset.val || product.variants[0].almacenamiento;
+                const col = document.querySelector('[data-type="col"][data-selected="true"]')?.dataset.val || product.variants[0].color;
+                const qty = parseInt(document.getElementById('qty-num').value);
+                
+                const variant = product.variants.find(v => v.almacenamiento === alm && v.color === col) || product.variants[0];
+                const basePrice = variant.costoProveedor * variant.margenContado;
+                
+                // Actualizar Stock
+                document.getElementById('modal-stock').innerText = variant.stock;
+
+                // Estilos de botones de modo
+                document.querySelectorAll('.payment-mode-btn').forEach(b => {
+                    const active = b.dataset.paymentMode === currentPaymentMode;
+                    b.className = `payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300 ${active ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-100' : 'bg-transparent text-gray-500 hover:bg-gray-200'}`;
                 });
+
+                const priceLabel = document.getElementById('price-label');
+                const finArea = document.getElementById('financing-options');
+                let waMsg = "";
+
+                if (currentPaymentMode === 'contado') {
+                    finArea.classList.add('hidden');
+                    priceLabel.innerText = "Precio al Contado";
+                    const total = (basePrice * qty).toFixed(2);
+                    document.getElementById('modal-price').innerText = `$${total}`;
+                    waMsg = `Hola! Quiero comprar de contado ${qty} ${product.name} (${alm}). Total: $${total}`;
+                } else {
+                    finArea.classList.remove('hidden');
+                    priceLabel.innerText = "Total Financiado";
+                    const months = document.getElementById('pay-months').value;
+                    const freq = document.getElementById('pay-freq').value;
+                    const calc = calculatePayment(basePrice * qty, months, freq, variant.tasaAnual);
+                    
+                    document.getElementById('modal-price').innerText = `$${calc.totalAmountDue}`;
+                    document.getElementById('calc-cuota').innerText = `$${calc.installmentAmount}`;
+                    document.getElementById('calc-total-pagos').innerText = calc.totalPayments;
+                    waMsg = `Hola! Me interesa financiar ${qty} ${product.name} (${alm}) a ${months} meses. Pago ${freq}.`;
+                }
+                document.getElementById('wa-btn').href = `https://wa.me/593967427594?text=${encodeURIComponent(waMsg)}`;
+            };
+
+            // Eventos
+            document.querySelectorAll('.payment-mode-btn').forEach(b => b.onclick = (e) => { currentPaymentMode = e.target.dataset.paymentMode; updateUI(); });
+            document.querySelectorAll('.variant-opt-btn').forEach(b => b.onclick = (e) => {
+                document.querySelectorAll(`[data-type="${e.target.dataset.type}"]`).forEach(btn => {
+                    btn.dataset.selected = "false";
+                    btn.classList.remove('border-cyan-600', 'bg-cyan-50', 'text-cyan-600');
+                });
+                e.target.dataset.selected = "true";
+                e.target.classList.add('border-cyan-600', 'bg-cyan-50', 'text-cyan-600');
+                updateUI();
             });
 
-            document.querySelectorAll('.option-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const type = e.target.getAttribute('data-option-type');
-                    document.querySelectorAll(`.option-btn[data-option-type="${type}"]`).forEach(b => b.setAttribute('data-selected', 'false'));
-                    e.target.setAttribute('data-selected', 'true');
-                    updateModalUI(product);
+            document.getElementById('qty-plus').onclick = () => { document.getElementById('qty-num').value++; updateUI(); };
+            document.getElementById('qty-min').onclick = () => { if(document.getElementById('qty-num').value > 1) { document.getElementById('qty-num').value--; updateUI(); } };
+            document.getElementById('pay-freq').onchange = updateUI;
+            document.getElementById('pay-months').onchange = updateUI;
+
+            // Pestañas
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.onclick = (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('border-cyan-600', 'text-cyan-600');
+                    b.classList.add('border-transparent', 'text-gray-400');
                 });
+                e.target.classList.add('border-cyan-600', 'text-cyan-600');
+                e.target.classList.remove('border-transparent', 'text-gray-400');
+                document.getElementById('tab-pane').innerHTML = e.target.dataset.tab === 'desc' ? product.longDescription : `<ul class="list-disc ml-5 space-y-2">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>`;
             });
 
-            document.getElementById('qty-plus').onclick = () => { document.getElementById('qty-input').value++; updateModalUI(product); };
-            document.getElementById('qty-minus').onclick = () => { if(document.getElementById('qty-input').value > 1) { document.getElementById('qty-input').value--; updateModalUI(product); } };
-            document.getElementById('payment-frequency').onchange = () => updateModalUI(product);
-            document.getElementById('payment-months').onchange = () => updateModalUI(product);
+            updateUI();
         }
 
-        function updateModalUI(product) {
-            const qty = parseInt(document.getElementById('qty-input').value);
-            const alm = document.querySelector('.option-btn[data-option-type="almacenamiento"][data-selected="true"]')?.getAttribute('data-option-value') || product.variants[0].almacenamiento;
-            const col = document.querySelector('.option-btn[data-option-type="color"][data-selected="true"]')?.getAttribute('data-option-value') || product.variants[0].color;
-            
-            const variant = product.variants.find(v => v.almacenamiento === alm && v.color === col) || product.variants[0];
-            const precioBaseVenta = variant.costoProveedor * variant.margenContado;
-
-            const modalPrice = document.getElementById('modal-price');
-            const finOptions = document.getElementById('financing-options');
-            const waLink = document.getElementById('modal-whatsapp-link');
-
-            let msg = "";
-
-            if (currentPaymentMode === 'contado') {
-                finOptions.classList.add('hidden');
-                const total = (precioBaseVenta * qty).toFixed(2);
-                modalPrice.textContent = `$${total}`;
-                msg = `Hola Moormix Digital, me interesa comprar al CONTADO ${qty} unidad(es) de ${product.name} (${alm}, ${col}). Total: $${total}`;
-            } else {
-                finOptions.classList.remove('hidden');
-                const months = document.getElementById('payment-months').value;
-                const freq = document.getElementById('payment-frequency').value;
-                
-                const calc = calculatePayment(precioBaseVenta * qty, months, freq, variant.tasaAnual);
-                
-                modalPrice.textContent = `$${calc.totalAmountDue}`;
-                document.getElementById('financing-installment-amount').textContent = `$${calc.installmentAmount}`;
-                document.getElementById('financing-total-payments').textContent = calc.totalPayments;
-                msg = `Hola, me interesa FINANCIAR ${qty} unidad(es) de ${product.name} (${alm}, ${col}). Plan: ${months} meses, pago ${freq}. Cuota: $${calc.installmentAmount}.`;
-            }
-
-            waLink.href = `https://wa.me/593967427594?text=${encodeURIComponent(msg)}`;
+        // Navegación General
+        function showPage(id) {
+            document.querySelectorAll('.content-page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0,0);
         }
 
-        // Inicialización
-        document.getElementById('close-modal').onclick = () => document.getElementById('info-modal').classList.add('hidden');
         document.getElementById('btn-inicio').onclick = () => showPage('page-inicio');
+        document.getElementById('m-btn-inicio').onclick = () => showPage('page-inicio');
         document.getElementById('btn-catalogo').onclick = () => showPage('page-catalogo');
+        document.getElementById('m-btn-catalogo').onclick = () => showPage('page-catalogo');
         document.getElementById('btn-ir-catalogo').onclick = () => showPage('page-catalogo');
-        document.getElementById('btn-nosotros').onclick = () => alert("Sección Nosotros en construcción");
         document.getElementById('btn-contacto').onclick = () => showPage('page-contacto');
         document.getElementById('menu-toggle').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+        document.getElementById('close-modal').onclick = () => document.getElementById('info-modal').classList.add('hidden');
 
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts(products);
-            showPage('page-inicio');
         });
     </script>
 </body>
