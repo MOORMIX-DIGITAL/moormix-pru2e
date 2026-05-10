@@ -3,346 +3,1363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moormix Digital - Catálogo</title>
+    <title>Moormix Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cyan-600': '#00BCD4',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos básicos para asegurar que el modal y las páginas funcionan */
+        .content-page {
+            min-height: calc(100vh - 4rem - 2.5rem); /* Altura mínima restando el header y el nuevo banner */
+        }
+        .modal-open {
+            overflow: hidden;
+    </style>
 </head>
 <body class="bg-gray-50">
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div id="top-banner-promo">
+        <div id="promo-text-container">
+            </div>
+    </div>
+    
+    <header class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center cursor-pointer" id="btn-inicio">
-                    <span class="text-3xl font-black text-cyan-600 tracking-tighter">MOORMIX</span>
-                    <span class="text-3xl font-light text-gray-400 ml-1">DIGITAL</span>
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-3xl font-extrabold text-cyan-600">Moormix</span>
+                    <span class="text-3xl font-light text-gray-800">Digital</span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <button id="btn-catalogo" class="text-gray-600 hover:text-cyan-600 font-bold transition">CATÁLOGO</button>
-                    <button id="btn-nosotros" class="text-gray-600 hover:text-cyan-600 font-bold transition">NOSOTROS</button>
-                    <button id="btn-contacto" class="bg-cyan-600 text-white px-6 py-2 rounded-full font-bold hover:bg-cyan-700 transition shadow-lg shadow-cyan-200">CONTACTO</button>
-                </div>
-                <button id="menu-toggle" class="md:hidden text-cyan-600 text-2xl"><i class="fas fa-bars"></i></button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-4 shadow-xl">
-            <button id="m-btn-inicio" class="block w-full text-left font-bold text-gray-700">INICIO</button>
-            <button id="m-btn-catalogo" class="block w-full text-left font-bold text-gray-700">CATÁLOGO</button>
-            <button id="m-btn-contacto" class="block w-full text-left font-bold text-cyan-600">CONTACTO</button>
-        </div>
-    </nav>
 
-    <main id="page-inicio" class="content-page">
-        <div class="relative h-[600px] flex items-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10 opacity-60"></div>
-            <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
-            <div class="relative z-20 max-w-7xl mx-auto px-6 text-white">
-                <h1 class="text-6xl font-black mb-4 leading-tight">TU PRÓXIMO IPHONE<br><span class="text-cyan-400">ESTÁ AQUÍ.</span></h1>
-                <p class="text-xl mb-8 text-gray-200 max-w-xl">Financiamiento directo, sin papeleo excesivo. Estrena hoy mismo con Moormix Digital.</p>
-                <button id="btn-ir-catalogo" class="bg-white text-cyan-600 px-10 py-4 rounded-full font-black text-lg hover:bg-cyan-50 transition transform hover:scale-105 shadow-2xl">EXPLORAR EQUIPOS</button>
+                <nav class="hidden md:flex md:space-x-4">
+                    <button id="btn-inicio" class="text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-lg font-medium transition-colors">Inicio</button>
+                    <button id="btn-catalogo" class="text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-lg font-medium transition-colors">Catálogo</button>
+                    <button id="btn-nosotros" class="text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-lg font-medium transition-colors">Nosotros</button>
+                    <button id="btn-contacto" class="text-gray-600 hover:text-cyan-600 px-3 py-2 rounded-md text-lg font-medium transition-colors">Contacto</button>
+                </nav>
+
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="p-2 text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600 rounded-md">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </main>
 
-    <main id="page-catalogo" class="content-page hidden max-w-7xl mx-auto px-4 py-16">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-                <h2 class="text-4xl font-black text-gray-900 uppercase tracking-tighter">Catálogo <span class="text-cyan-600">Premium</span></h2>
-                <p class="text-gray-500 font-medium">Equipos homologados con garantía total.</p>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <button id="mobile-btn-inicio" class="block w-full text-left text-gray-700 hover:bg-gray-100 px-4 py-2 text-base font-medium transition-colors" onclick="showPage('page-inicio')">Inicio</button>
+            <button id="mobile-btn-catalogo" class="block w-full text-left text-gray-700 hover:bg-gray-100 px-4 py-2 text-base font-medium transition-colors" onclick="showPage('page-catalogo'); updateCatalog();">Catálogo</button>
+            <button id="mobile-btn-nosotros" class="block w-full text-left text-gray-700 hover:bg-gray-100 px-4 py-2 text-base font-medium transition-colors" onclick="showPage('page-nosotros')">Nosotros</button>
+            <button id="mobile-btn-contacto" class="block w-full text-left text-gray-700 hover:bg-gray-100 px-4 py-2 text-base font-medium transition-colors" onclick="showPage('page-contacto')">Contacto</button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="page-inicio" class="content-page hidden">
+            <div class="text-center py-20 bg-cyan-50 rounded-xl shadow-inner">
+                <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Bienvenidos a <span class="text-cyan-600">Moormix Digital</span></h1>
+                <p class="text-xl text-gray-600 mb-8">Tu tienda de confianza para los últimos modelos de celulares. Explora nuestro catálogo y encuentra el dispositivo perfecto para ti.</p>
+                <button id="btn-ir-catalogo" class="bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-cyan-700 transition duration-300">
+                    Ver Catálogo Ahora
+                </button>
             </div>
-            <div class="flex gap-4 items-center">
-                <div class="relative">
-                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" id="search-input" placeholder="Buscar modelo..." class="pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-2xl w-full md:w-80 focus:ring-2 focus:ring-cyan-500 outline-none transition shadow-sm">
+
+            <div class="mt-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Nuestros Valores</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <svg class="w-12 h-12 text-cyan-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 0012 21.001a12.001 12.001 0 008.618-14.016z"></path></svg>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Garantía Total</h3>
+                        <p class="text-gray-500">Ofrecemos un año de garantía en todos nuestros dispositivos.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <svg class="w-12 h-12 text-cyan-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mejores Precios</h3>
+                        <p class="text-gray-500">Precios competitivos que incluyen el IVA para tu total tranquilidad.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <svg class="w-12 h-12 text-cyan-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Última Tecnología</h3>
+                        <p class="text-gray-500">Siempre a la vanguardia con los modelos más recientes del mercado.</p>
+                    </div>
                 </div>
-                <select id="sort-order" class="bg-white border border-gray-200 py-3 px-4 rounded-2xl font-bold text-gray-600 outline-none shadow-sm">
-                    <option value="name">A-Z</option>
-                    <option value="price">PRECIO</option>
+            </div>
+        </section>
+
+        <section id="page-catalogo" class="content-page hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">Catálogo de Productos</h1>
+
+            <div class="mb-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <input type="text" id="search-input" placeholder="Buscar por nombre o descripción..." class="w-full sm:w-2/3 p-3 border border-gray-300 rounded-lg focus:ring-cyan-600 focus:border-cyan-600">
+                <select id="sort-order" class="w-full sm:w-1/3 p-3 border border-gray-300 rounded-lg focus:ring-cyan-600 focus:border-cyan-600 bg-white">
+                    <option value="default">Ordenar por...</option>
+                    <option value="name">Nombre (A-Z)</option>
+                    <option value="price">Precio (Menor a Mayor)</option>
                 </select>
             </div>
-        </div>
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+
+            <div id="catalogo-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                </div>
+        </section>
+
+        <section id="page-nosotros" class="content-page hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">Quiénes Somos</h1>
+            <div class="bg-white p-8 rounded-xl shadow-lg space-y-6">
+                <p class="text-lg text-gray-700">
+                    <strong class="font-bold text-cyan-600">Moormix Digital</strong> es un emprendimiento digital fundado en 2025 con el objetivo de simplificar el acceso a la tecnología móvil en el mercado ecuatoriano. Nos especializamos en la venta de dispositivos de última generación, garantizando una experiencia de compra segura y conveniente.
+                </p>
+                <p class="text-gray-600">
+                    Nuestra misión es simple: Ofrecer a nuestros clientes los mejores y más recientes dispositivos móviles del mercado, a través de una plataforma accesible que prioriza la confianza y la satisfacción. Proyectamos ser la primera opción para la compra de tecnología móvil en línea, construyendo una base de clientes leales que valoren nuestro servicio al cliente excepcional y nuestra constante actualización de productos.
+                </p>
+                <h2 class="text-2xl font-semibold text-gray-800 pt-4">Servicios Clave</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-600 pl-4">
+                    <li>Selección Curada: Disponemos de un catálogo de smartphones y accesorios seleccionados por su calidad y rendimiento.</li>
+                    <li>Planes de Pago Flexibles: Proporcionamos opciones de financiamiento adaptadas a las necesidades del cliente.</li>
+                    <li>Logística Eficiente: Garantizamos envíos rápidos a nivel nacional.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="page-contacto" class="content-page hidden">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">Contáctanos</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Envíanos un mensaje</h2>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+                            <input type="text" id="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-600 focus:border-cyan-600">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                            <input type="email" id="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-600 focus:border-cyan-600">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Mensaje, Reclamo o Sugerencia</label>
+                            <textarea id="message" rows="4" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-600 focus:border-cyan-600"></textarea>
+                        </div>
+                        <p id="form-message" class="text-sm hidden"></p>
+                        <button type="submit" class="w-full bg-cyan-600 text-white font-bold py-3 rounded-lg hover:bg-cyan-700 transition duration-300">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">WhatsApp Directo</h3>
+                        <a href="https://wa.me/593962178741" target="_blank" class="text-green-600 hover:text-green-700 font-medium flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c-.24 0-.46-.08-.65-.21l-3.26-2.04c-.39-.24-.65-.68-.65-1.16V7.5c0-.55.45-1 1-1s1 .45 1 1v5.18l2.97 1.86c.49.31.65.94.34 1.43-.16.25-.43.39-.71.39z"/></svg>
+                            +593 96 217 8741
+                        </a>
+                        <p class="text-gray-500 text-sm mt-2">Atención inmediata para compras y consultas.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Correo de Soporte</h3>
+                        <p class="text-cyan-600 font-medium">moormixdigital@outlook.com</p>
+                        <p class="text-gray-500 text-sm mt-2">Para soporte técnico, garantías y reclamos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <div id="info-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-[2rem] w-full max-w-5xl max-h-[95vh] overflow-y-auto relative shadow-2xl">
-            <button id="close-modal" class="absolute top-6 right-6 text-gray-400 hover:text-black text-3xl z-10 transition">&times;</button>
+    <div id="info-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-screen overflow-y-auto relative p-4 sm:p-6">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors z-10">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
             
-            <div id="modal-content-inner" class="p-4 md:p-12">
+            <div id="modal-content" class="mt-4">
                 </div>
         </div>
     </div>
 
+
     <script>
-        // *************************************************************
-        // * PRODUCTOS CON COSTOS PERSONALIZADOS
-        // *************************************************************
+        // Array de productos con variantes y precios
         const products = [
             {
-                id: 1,
-                name: "iPhone 15 Pro Max",
-                shortDescription: "El titanio llega al iPhone.",
-                longDescription: "Diseño robusto y ligero de titanio de calidad aeroespacial. Botón de Acción personalizable. El sistema de cámaras más potente en un iPhone.",
-                specs: ["Pantalla 6.7\" ProMotion", "Chip A17 Pro", "Cámara Triple 48MP", "USB-C 3.0"],
-                image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=1000",
+                name: "Infinix Smart 10",
+                brand: "Infinix",
+                shortDescription: "64GB/3+3RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Usos Básicos, Estudiantiles, Gamers y Multitarea.\nDiseño Destacado por su diseño acabado en tipo metálico, altavoces duales mejorados hasta 300%, sensor de huella lateral y reconocimiento facial.",
+                images: ["img/infinixsmart10.png", "img/infinixsmart102.png", "img/infinixsmart103.png"],
+                specs: [
+                    "Procesador Unisoc T7250",
+                    "Sistema operativo Android 15 XOS",
+                    "Pantalla 6.6 a 6.8\" LCD IPSs HD 120GHz",
+                    "Cámara frontal de 8 MP",
+                    "Cámara trasera de 13 MP",
+                    "Batería de 5000mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura con IP64",
+                    "Flash LED",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
                 variants: [
-                    { 
-                        almacenamiento: "256GB", ram: "8GB", color: "Titanio Natural", stock: 4,
-                        costoProveedor: 1050.00, 
-                        margenContado: 1.15, // 15% ganancia
-                        tasaAnual: 0.28    // 28% interés anual
-                    },
-                    { 
-                        almacenamiento: "512GB", ram: "8GB", color: "Titanio Negro", stock: 2,
-                        costoProveedor: 1250.00,
-                        margenContado: 1.15,
-                        tasaAnual: 0.25
-                    }
+                    { almacenamiento: "64GB", ram: "6GB", color: "Azul", price: 89.00, stock: 20 },
+                    { almacenamiento: "64GB", ram: "6GB", color: "Dorado", price: 89.00, stock: 15 },
+                    { almacenamiento: "64GB", ram: "6GB", color: "Plata Titanio", price: 89.00, stock: 20 },
+                    { almacenamiento: "64GB", ram: "6GB", color: "Negro Elegante", price: 89.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Azul", price: 102.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Dorado", price: 102.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Plata Titanio", price: 102.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro Elegante", price: 102.00, stock: 15 },
                 ]
             },
             {
-                id: 2,
-                name: "Samsung S24 Ultra",
-                shortDescription: "Inteligencia Artificial Galaxy.",
-                longDescription: "Marco de titanio, pantalla plana y el rendimiento que necesitas para jugar y crear contenidos.",
-                specs: ["Pantalla 6.8\" QHD+", "Snapdragon 8 Gen 3", "200MP Camera", "S-Pen"],
-                image: "https://images.unsplash.com/photo-1707230559036-39149298586d?q=80&w=1000",
+                name: "Infinix Hot 60 Pro+",
+                brand: "Infinix",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Profesional y Creador de Contenido.\nCuenta con Huella lateral o en pantalla, tambien con altavoces estéreo Hi-Res audio tuned by JBL\nNo cuenta con expansión vía microSD.",
+                images: ["img/infinixhot60pro+.png", "img/infinixhot60pro+2.png", "img/infinixhot60pro+3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G200",
+                    "Sistema operativo Android 15 XOS",
+                    "Pantalla 6.7\" AMOLED FHD+ +IPS 144GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5160mAh",
+                    "Android 15",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP54",
+                    "Flash LED",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
                 variants: [
-                    { 
-                        almacenamiento: "256GB", ram: "12GB", color: "Titanium Gray", stock: 6,
-                        costoProveedor: 980.00,
-                        margenContado: 1.12, 
-                        tasaAnual: 0.30 
-                    }
+                    { almacenamiento: "256GB", ram: "16GB", color: "Gris Oscuro", price: 224.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Rosa Matizado", price: 224.00, stock: 15 },
                 ]
+            },
+            {
+                name: "Infinix Hot 60 Pro",
+                brand: "Infinix",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Usos Básicos, Estudiantiles, Gamers y Multitarea.\nDiseño Destacado por su diseño acabado en tipo metálico, altavoces duales mejorados hasta 300%, sensor de huella y reconocimiento facial.",
+                images: ["img/infinixhot60pro.png", "img/infinixhot60pro2.png", "img/infinixhot60pro3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G200",
+                    "Sistema operativo Android 15 XOS",
+                    "Pantalla 6.7\" AMOLED FHD+ +IPS 144GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5160mAh",
+                    "Android 15",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP54",
+                    "Flash LED",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "64GB", ram: "6GB", color: "Rosa Matiz", price: 189.00, stock: 20 },
+                ]
+            },
+            {
+                name: "Infinix Hot 60i",
+                brand: "Infinix",
+                shortDescription: "256GB/4+4RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Fotografos, Profesional, Gamers, Multitareas y Aventureros.\nDiseño Destacado por su sensor de huella lateral y reconocimiento facial.",
+                images: ["img/infinixhot60i.png", "img/infinixhot60i2.png", "img/infinixhot60i3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G200",
+                    "Sistema operativo Android 15 XOS",
+                    "Pantalla 6.7\" AMOLED FHD+ +IPS 144GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5160mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP54",
+                    "Flash LED",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "8GB", color: "Rosa", price: 134.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Gris", price: 129.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Lila", price: 134.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Verde", price: 129.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Negro", price: 129.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Azul", price: 129.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Rosa", price: 149.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Gris", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Lila", price: 149.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Verde", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro", price: 144.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Azul", price: 144.00, stock: 15 },
+                ]
+            },
+            {
+                name: "Tecno Spark Go 1",
+                brand: "Tecno",
+                shortDescription: "128GB/4+4RAM<br>1 Año de Garantía<br>Incluye auriculares",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Usos Básicos, Estudiantiles, Gamers y Multitarea.\nDiseño Destacado por su diseño acabado en tipo metálico, altavoces duales mejorados hasta 300%, sensor de huella lateral y reconocimiento facial.",
+                images: ["img/tecnosparkgo1.png", "img/tecnosparkgo12.png", "img/tecnosparkgo13.png"],
+                specs: [
+                    "Procesador Unisoc Tiger T615",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.6\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal de 8 MP",
+                    "Cámara trasera de 13 MP",
+                    "Batería de 5000mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash 360°",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "128GB", ram: "8GB", color: "Titanium Gold", price: 99.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro", price: 99.00, stock: 15 },
+                ]
+            },
+            {
+                name: "Tecno Spark Go 2",
+                brand: "Tecno",
+                shortDescription: "64GB/3+3RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Usos Básicos, Estudiantiles, Gamers y Multitarea.\nDiseño Destacado con sensor de huella lateral y altavoces duales.",
+                images: ["img/tecnosparkgo2.png", "img/tecnosparkgo22.png", "img/tecnosparkgo23.png"],
+                specs: [
+                    "Procesador Unisoc T7250",
+                    "Sistema operativo Android 15 con HIOS 15",
+                    "Pantalla 6.6\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal de 8 MP",
+                    "Cámara trasera de 13 MP",
+                    "Batería de 5000mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash 360°",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "64GB", ram: "6GB", color: "Gris", price: 89.00, stock: 20 },
+                    { almacenamiento: "64GB", ram: "6GB", color: "Negro", price: 89.00, stock: 15 },
+                    { almacenamiento: "64GB", ram: "6GB", color: "Celeste", price: 89.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Gris", price: 99.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro", price: 99.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Celeste", price: 99.00, stock: 20 },
+                ]
+            },
+            {
+                name: "Tecno Spark 30C",
+                brand: "Tecno",
+                shortDescription: "256GB/4+4RAM<br>1 Año de Garantía<br>Incluye auriculares",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Profesionales, Gamers y Multitarea.\nDiseño Destacado por sus altavoces duales.",
+                images: ["img/tecnospark30c.png", "img/tecnospark30c2.png", "img/tecnospark30c3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G81",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.6\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal de 8 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5000mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash Led",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "8GB", color: "Negro", price: 114.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Blanco", price: 114.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro", price: 139.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco", price: 139.00, stock: 15 },
+                ]
+            },
+            {
+                name: "Tecno Spark 30 Pro",
+                brand: "Tecno",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Profesionales, Aventureros, Multitareas y Creador de contenido.\nDiseño Destacado por su pantalla de cristal redondeado.",
+                images: ["img/tecnospark30pro.png", "img/tecnospark30pro2.png", "img/tecnospark30pro3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G100",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.7\" FHD 120GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 108 MP",
+                    "Batería de 5000mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash Dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro", price: 184.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco", price: 184.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Tecno Spark 40 Pro",
+                brand: "Tecno",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Porfesionales, Aventureros, Multitareas y Creador de Contenidos.\nCaracterísticas Destacables como expanción hasta 2TB con tarjeta microSDXC y lector de huellas.",
+                images: ["img/tecnospark40pro.png", "img/tecnospark40pro2.png", "img/tecnospark40pro3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G100",
+                    "Sistema operativo Android 15 con HIOS 15.1",
+                    "Pantalla 6.7\" AMOLED FHD 144GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5200mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash Dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro", price: 184.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Azul Matiz", price: 184.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Tecno Spark 40 Pro+",
+                brand: "Tecno",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Profesionales, Aventureros, Multitareas y Creador de Contenidos.\nCaracterísticas Destacables como resistencia a impactos hasta 1,5 metros y lector de huellas.",
+                images: ["img/tecnospark40pro+.png", "img/tecnospark40pro+2.png", "img/tecnospark40pro+3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G200",
+                    "Sistema operativo Android 15 con HIOS 15",
+                    "Pantalla 6.7\" AMOLED FHD 144GHz",
+                    "Cámara frontal de 13 MP",
+                    "Cámara trasera de 50 MP",
+                    "Batería de 5200mAh",
+                    "Ranura de tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua con IP64",
+                    "Flash Dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Nebula Black", price: 209.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Aurora White", price: 209.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Moon Titanium", price: 209.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Tundra Green", price: 209.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Tecno Camon 40",
+                brand: "Tecno",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Fotografos, Profesionales, Aventureros y Ultitareas.\nCaracterísticas Destacables como parlantes duales, lector de huellas y estabilización óptica de imagen.",
+                images: ["img/tecnocamon40.png", "img/tecnocamon40.png2", "img/tecnocamon40.png3"],
+                specs: [
+                    "Procesador MediaTek Helio G100 Ultimate",
+                    "Sistema operativo Android 15 HIOS",
+                    "Pantalla 6.7\" AMOLED HD+ 120GHz",
+                    "Cámara frontal 32 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5200mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco Matiz", price: 224.00, stock: 20 },
+                ],
+            },
+            {
+                name: "Honor x6c",
+                brand: "Huawei",
+                shortDescription: "256GB/6+6RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Profesional y Multitareas.\nCaracterísticas Destacables como expansion hasta 1 TB con tarjeta microSD y lector de huella.",
+                images: ["img/honorx6c.png", "img/honorx6c2.png", "img/honorx6c3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G81 Ultra",
+                    "Sistema operativo Android 15 magicOS",
+                    "Pantalla 6.6\" HD+ 120GHz",
+                    "Cámara frontal 5 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5300mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "12GB", color: "Blanco", price: 144.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "12GB", color: "Opalo", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco", price: 144.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Opalo", price: 144.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Honor x7c",
+                brand: "Huawei",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Profesionales y Multitareas.\nCaracterís Destacables como acabado de esquinas redondeadas, reconocimiento facial, efecto de sonido - Honor Histem y huella digital.",
+                images: ["img/honorx7c.png", "img/honorx7c2.png", "img/honorx7c3.png"],
+                specs: [
+                    "Procesador Qualcomm Snapdragon 685",
+                    "Sistema operativo MagicOS 8.0 (Basado en Android 14)",
+                    "Pantalla 6.7\" TFTLCD HD+ 120GHz",
+                    "Cámara frontal 8 MP",
+                    "Cámara trasera 108 MP",
+                    "Batería 5200mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro Elegante", price: 189.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Verde Militar", price: 189.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco Marmol", price: 189.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Modelo Beige", price: 199.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Redmi A5",
+                brand: "Redmi",
+                shortDescription: "64GB/3+3RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Estudiantes y Multitareas.\nCaracterís Destacables como acabado de esquinas redondeadas, expandible hasta 1 TB con tarjeta microSD, reconocimiento facial y huella digital.",
+                images: ["img/redmia5.png", "img/redmia52.png", "img/redmia53.png"],
+                specs: [
+                    "Procesador Unisoc Tiger T7250",
+                    "Sistema operativo Android 15 Go Edition",
+                    "Pantalla 6.8\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal 8 MP",
+                    "Cámara trasera 32 MP",
+                    "Batería 5200mAh",
+                    "Tarjeta de memoria",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "256GB", ram: "6GB", color: "Negro Elegante", price: 89.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "6GB", color: "Blanco Marmol", price: 89.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "6GB", color: "Celeste Oceano", price: 89.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro Elegante", price: 99.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Blanco Marmol", price: 99.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Celeste Oceano", price: 99.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Redmi 14C",
+                brand: "Redmi",
+                shortDescription: "128GB/4+4RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Gamers, Estudiantes y Multitareas.\nCaracterís Destacables como acabado de esquinas redondeadas, notch en forma de gota, expandible hasta 1 TB con tarjeta microSD, reconocimiento facial y huella digital.",
+                images: ["img/redmi14c.png", "img/redmi14c2.png", "img/redmi14c3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G81 Ultra",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.8\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal 13 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5160mAh",
+                    "Tarjeta de memoria",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "128GB", ram: "8GB", color: "Verde Pasto", price: 114.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Azul Cielo", price: 114.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro Elegante", price: 114.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Verde Pasto", price: 124.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Azul Cielo", price: 124.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Negro Elegante", price: 124.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Verde Pasto", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Azul Cielo", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro Elegante", price: 144.00, stock: 20 },
+                ],
+            },
+            {
+                name: "Redmi 15C",
+                brand: "Redmi",
+                shortDescription: "128GB/4+4RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Usos Básicos y Estudiantiles.\nCaracterís Destacables como acabado de esquinas redondeadas, reconocimiento facial y huella digital.",
+                images: ["img/redmi15c.png", "img/redmi15c2.png", "img/redmi15c3.png"],
+                specs: [
+                    "Procesador MediaTek Helio G81 Ultra",
+                    "Sistema operativo Android 15",
+                    "Pantalla 6.8\" LCD IPS HD+ 120GHz",
+                    "Cámara frontal 13 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5160mAh",
+                    "Tarjeta de memoria",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro Elegante", price: 129.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Azul Matiz", price: 129.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Negro Elegante", price: 144.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Azul Matiz", price: 144.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Samsung Galaxy A06",
+                brand: "Samsung",
+                shortDescription: "128GB/4+4RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Multitareas y Estudiantiles.\nCaracterís Destacables como huella digital.",
+                images: ["img/samsunga06.png", "img/samsunga062.png", "img/samsunga063.png"],
+                specs: [
+                    "Procesador MediaTek G85",
+                    "Sistema operativo Android 15",
+                    "Pantalla 6.7\" HD+ 60GHz",
+                    "Cámara frontal 8 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5000mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro", price: 104.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Blanco", price: 104.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Celeste Cielo", price: 104.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Samsung Galaxy A16",
+                brand: "Samsung",
+                shortDescription: "128GB/4+4RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Multitareas y Estudiantiles\nCaracterís Destacables como lector de huella digital.",
+                images: ["img/samsunga16.png", "img/samsunga162.png", "img/samsunga163.png"],
+                specs: [
+                    "Procesador MediaTek Helio G99",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.7\" AMOLED FHD+ 90GHz",
+                    "Cámara frontal 13 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5200mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+                variants: [
+                    { almacenamiento: "128GB", ram: "8GB", color: "Negro Elegante", price: 134.00, stock: 20 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Verde Pálido", price: 134.00, stock: 15 },
+                    { almacenamiento: "128GB", ram: "8GB", color: "Blanco Marmol", price: 134.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Negro Elegante", price: 164.00, stock: 20 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Verde Pálido", price: 164.00, stock: 15 },
+                    { almacenamiento: "256GB", ram: "8GB", color: "Blanco Marmol", price: 164.00, stock: 15 },
+                ],
+            },
+            {
+                name: "Moto G85 5G",
+                brand: "Motorola",
+                shortDescription: "256GB/8+8RAM<br>1 Año de Garantía",
+                longDescription: "IMAGEN DE REFERENCIA.\nBuen rendimiento para Fotografos, Multitareas y Creador de Contenido.\nCaracterís Destacables como pantalla pOLED sin bordes, reconocimiento facial y huella digital.",
+                images: ["img/motog855g.png", "img/motog855g2.png", "img/motog855g3.png"],
+                specs: [
+                    "Procesador Snapdragon 6s de 3ra generacion",
+                    "Sistema operativo Android 14",
+                    "Pantalla 6.6\" pOLED FHD+ 120GHz",
+                    "Cámara frontal 32 MP",
+                    "Cámara trasera 50 MP",
+                    "Batería 5000mAh",
+                    "Tarjeta de memoria",
+                    "Resistencia al polvo y salpicadura de agua IP54",
+                    "Flash dual",
+                    "Dual Sim",
+                    "USB tipo C"
+                ],
+             tags: "Oferta",
+                variants: [
+                    { almacenamiento: "256GB", ram: "16GB", color: "Negro Elegante", price: 219.00, stock: 20 },
+               ]
             }
         ];
 
-        // Lógica de cálculo
-        function calculatePayment(amount, months, frequency, annualRate) {
-            const interest = amount * (annualRate * (months / 12));
-            const total = amount + interest;
-            let divider = frequency === 'quincenal' ? 2 : (frequency === 'semanal' ? 4 : 1);
-            const totalPayments = months * divider;
+        // Calcular el precio con IVA para todas las variantes
+        products.forEach(product => {
+            product.variants.forEach(variant => {
+                variant.priceWithTax = variant.price * 1.15; // 15% de IVA
+            });
+        });
+
+     products.forEach((product, index) => {
+      product.id = index;
+      });
+        // *************************************************************
+        // * LÓGICA DE FINANCIAMIENTO POR RANGOS DE PRECIO
+        // *************************************************************
+        // Rango A: $0–$150   → 3m x1.50 | 6m x2.20 | 9m x3.00
+        // Rango B: $151–$300 → 3m x1.40 | 6m x2.14 | 9m DESHABILITADO
+        // Rango C: >$300     → 3m x1.30 | 6m x1.80 | 9m DESHABILITADO
+
+        function getMultiplier(basePrice, months) {
+            if (basePrice <= 150) {
+                // Rango A: $0–$150
+                if (months === '3') return 1.50;
+                if (months === '6') return 2.20;
+                if (months === '9') return 3.00;
+            } else if (basePrice <= 300) {
+                // Rango B: $151–$300
+                if (months === '3') return 1.40;
+                if (months === '6') return 2.14;
+                // 9 meses no disponible en Rango B
+            } else {
+                // Rango C: más de $300
+                if (months === '3') return 1.30;
+                if (months === '6') return 1.80;
+                // 9 meses no disponible en Rango C
+            }
+            return null; // Opción no disponible
+        }
+
+        function calculatePayment(priceWithTax, basePrice, months, frequency) {
+            const multiplier = getMultiplier(basePrice, months);
+            if (!multiplier) return null;
+
+            const totalAmountDue = priceWithTax * multiplier;
+            const totalMonths = parseInt(months);
+            const totalPayments = totalMonths * (
+                frequency === 'mensual' ? 1 :
+                frequency === 'quincenal' ? 2 :
+                frequency === 'semanal' ? 4 : 1
+            );
+            const installmentAmount = totalAmountDue / totalPayments;
+
             return {
-                totalAmountDue: total.toFixed(2),
-                installmentAmount: (total / totalPayments).toFixed(2),
+                totalAmountDue: totalAmountDue.toFixed(2),
+                installmentAmount: installmentAmount.toFixed(2),
                 totalPayments: totalPayments
             };
         }
 
-        let currentPaymentMode = 'contado';
+     // ** MODIFICACIÓN CLAVE: Lógica para renderizar etiquetas **
+function renderProducts(productsToRender) {
+    const catalogGrid = document.getElementById('catalog-grid');
+    if (!catalogGrid) return;
 
-        function renderProducts(items) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = items.map(p => {
-                const v = p.variants[0];
-                const price = (v.costoProveedor * v.margenContado).toFixed(2);
-                return `
-                <div class="group bg-white rounded-[2rem] p-4 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer border border-gray-100" onclick="openModal(${p.id})">
-                    <div class="overflow-hidden rounded-[1.5rem] mb-4 h-64">
-                        <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="px-2">
-                        <h3 class="font-black text-xl text-gray-800 uppercase tracking-tighter">${p.name}</h3>
-                        <p class="text-gray-400 text-sm font-bold mb-4">${p.shortDescription}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-black text-cyan-600">$${price}</span>
-                            <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-            }).join('');
+    const getTagHtml = (tag) => {
+        if (!tag) return '';
+        
+        let label = '';
+        let classes = 'absolute top-2 right-2 px-3 py-1 text-xs font-bold text-white rounded-full shadow-md';
+        
+        switch (tag.toLowerCase()) {
+            case 'nuevo':
+                label = 'NUEVO';
+                classes += ' bg-cyan-600';
+                break;
+            case 'agotado':
+                label = 'AGOTADO';
+                classes += ' bg-red-700';
+                break;
+            case 'oferta':
+                label = 'OFERTA';
+                classes += ' bg-fuchsia-600';
+                break;
+            case 'pocas unidades':
+                label = '¡POCAS UNIDADES!';
+                classes += ' bg-amber-500';
+                break;
+            default:
+                return '';
         }
+        return `<span class="${classes}">${label}</span>`;
+    };
+    
+    catalogGrid.innerHTML = productsToRender.map(p => {
+        const tagHtml = getTagHtml(p.tag);
+        
+        return `
+            <div class="product-card p-4 border rounded-lg shadow-md hover:shadow-xl transition duration-300 relative">
+                ${tagHtml} <img src="assets/images/${p.image}" alt="${p.name}" class="w-full h-40 object-cover rounded-md mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">${p.name}</h3>
+                <p class="text-sm text-gray-500 mb-2">${p.shortDescription}</p>
+                <p class="text-xl font-bold text-cyan-600 mb-4">$${p.variants[0].priceWithTax.toFixed(2)}</p>
+                <button onclick="showModal(${p.id})" class="btn-primary w-full bg-cyan-600 text-white py-2 rounded hover:bg-cyan-700 transition duration-200">Ver Detalles</button>
+            </div>
+        `;
+    }).join('');
+}
+        // *************************************************************
 
-        function openModal(productId) {
-            const product = products.find(p => p.id === productId);
-            const modalContent = document.getElementById('modal-content-inner');
-            const uniqueAlm = [...new Set(product.variants.map(v => v.almacenamiento))];
-            const uniqueCol = [...new Set(product.variants.map(v => v.color))];
 
-            modalContent.innerHTML = `
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <div class="w-full lg:w-1/2">
-                        <img id="modal-main-img" src="${product.image}" class="w-full rounded-[2.5rem] shadow-2xl h-[500px] object-cover border-8 border-gray-50">
+        // Función para renderizar los productos en el catálogo 
+function renderProducts(productsToRender) {
+    const catalogoGrid = document.getElementById('catalogo-grid');
+    catalogoGrid.innerHTML = ''; // Limpiar el contenedor
+    if (productsToRender.length === 0) {
+        catalogoGrid.innerHTML = `<p class="col-span-full text-center text-gray-500">No se encontraron productos.</p>`;
+        return;
+    }
+    productsToRender.forEach((product, index) => {
+        const tagColor = product.tag === "Oferta" ? "bg-red-500" : (product.tag === "Nuevo" ? "bg-green-500" : (product.tag === "Pocas Unidades" ? "bg-yellow-500" : "bg-cyan-600"));
+        const tagHtml = product.tag ? `<span class="absolute top-2 right-2 ${tagColor} text-white text-xs font-semibold px-2 py-1 rounded-full uppercase shadow-md">${product.tag}</span>` : '';
+        
+        // PRECIO SÓLO CON IVA EN LA TARJETA
+        const priceHtml = `
+            <div class="mb-4">
+                <span class="text-2xl font-bold text-cyan-600">
+                    $${product.variants[0].priceWithTax.toFixed(2)}
+                </span>
+                <span class="text-xs font-semibold text-gray-500 block">
+                    (Precio con IVA)
+                </span>
+            </div>
+        `;
+        
+        const productCard = `
+            <div class="bg-white p-4 rounded-2xl shadow-lg flex flex-col items-center text-center transition-transform hover:scale-105 h-full relative">
+                ${tagHtml}
+                <div class="w-full aspect-square mb-4 overflow-hidden rounded-lg">
+                    <img src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">${product.name}</h3>
+                <p class="text-gray-500 text-sm mb-4 flex-1">${product.shortDescription}</p>
+                ${priceHtml}
+                <button class="info-btn w-full bg-gray-200 text-gray-800 font-bold py-2 rounded-lg hover:bg-gray-300 transition-colors" data-product-id="${product.id}">
+                    Más Info
+                </button>
+            </div>
+        `;
+        catalogoGrid.innerHTML += productCard;
+    });
+    // Y corrige el listener para usar un parámetro consistente:
+    document.querySelectorAll('.info-btn').forEach(button => {
+        // Al hacer clic, pasamos el ID del producto directamente.
+        button.addEventListener('click', (e) => {
+            const productId = e.currentTarget.getAttribute('data-product-id');
+            showModal(productId);
+        });
+    });
+}
+            
+        // Función para mostrar el modal con la información del producto
+        function showModal(productId) {
+
+const product = products.find(p => p.id === parseInt(productId)); 
+    
+    if (!product) {
+        console.error('Producto no encontrado con ID:', productId);
+        return;
+    }
+    
+    const modal = document.getElementById('info-modal');
+    const modalContent = document.getElementById('modal-content');
+            
+            // Recolectar opciones únicas para cada categoría
+            const uniqueOptions = {
+                almacenamiento: [...new Set(product.variants.map(v => v.almacenamiento))].sort(),
+                ram: [...new Set(product.variants.map(v => v.ram))].sort(),
+                color: [...new Set(product.variants.map(v => v.color))].sort()
+            };
+            
+            // Establecer la variante inicial como la primera
+            let selectedVariant = product.variants[0];
+
+            // Generar las opciones dinámicamente
+            let optionsHtml = '';
+            for (const key in uniqueOptions) {
+                const label = key.charAt(0).toUpperCase() + key.slice(1);
+                optionsHtml += `
+                    <div class="mb-4">
+                        <p class="text-gray-700 font-semibold mb-2">${label}:</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${uniqueOptions[key].map(option => `
+                                <button class="option-btn px-4 py-2 border rounded-full text-sm font-medium transition-colors border-gray-300 bg-white text-gray-700 hover:bg-gray-100 data-[selected=true]:bg-cyan-600 data-[selected=true]:text-white data-[selected=true]:border-cyan-600" data-option-type="${key}" data-option-value="${option}" ${option === selectedVariant[key] ? 'data-selected="true"' : ''}>
+                                    ${option}
+                                </button>
+                            `).join('')}
+                        </div>
                     </div>
-                    <div class="w-full lg:w-1/2 flex flex-col justify-center">
-                        <div class="mb-6">
-                            <span class="bg-cyan-100 text-cyan-600 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Disponible</span>
-                            <h2 class="text-5xl font-black text-gray-900 mt-2 tracking-tighter uppercase">${product.name}</h2>
-                            <p class="text-gray-500 font-medium mt-2">Stock: <span id="modal-stock" class="text-gray-900">0</span> unidades</p>
+                `;
+            }
+
+            const initialWhatsappMessage = `Hola, me interesa comprar el ${product.name} con ${selectedVariant.almacenamiento} de almacenamiento, ${selectedVariant.ram} de RAM y color ${selectedVariant.color}. Modalidad: Contado. Cantidad: 1.`;
+            
+            // Contenido completo del modal
+            modalContent.innerHTML = `
+                <div class="flex flex-col lg:flex-row items-center lg:items-start text-left space-y-8 lg:space-y-0 lg:space-x-8">
+                    <div class="flex flex-col items-center w-full lg:w-1/2">
+                        <div class="w-full aspect-square mb-4 overflow-hidden rounded-lg">
+                             <img id="main-product-image" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex space-x-2 overflow-x-auto w-full justify-center p-1">
+                            ${product.images.map(image => `
+                                <img src="${image}" alt="${product.name}" class="thumbnail w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-cyan-600 transition-colors" onclick="document.getElementById('main-product-image').src='${image}'">
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="w-full lg:w-1/2">
+                        <span class="bg-pink-500 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">${product.brand}</span>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-2">${product.name}</h3>
+                        <p class="text-sm text-gray-500 mt-2">Disponibles: <span id="modal-stock">${selectedVariant.stock}</span>!</p>
+                        
+                        <div class="mt-4">
+                            ${optionsHtml}
                         </div>
 
-                        <div class="flex gap-3 mb-8 bg-gray-100 p-1.5 rounded-2xl w-fit">
-                            <button class="payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300" data-payment-mode="contado">CONTADO</button>
-                            <button class="payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300" data-payment-mode="plazos">PLAZOS</button>
+                        <div class="mb-4 border-t pt-4">
+                            <p class="text-gray-700 font-semibold mb-2">Modalidad de Pago:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="payment-mode-btn px-4 py-2 border rounded-full text-sm font-medium border-gray-300 bg-cyan-600 text-white" data-payment-mode="contado">
+                                    Contado
+                                </button>
+                                <button class="payment-mode-btn px-4 py-2 border rounded-full text-sm font-medium border-gray-300 bg-white text-gray-700 hover:bg-gray-100" data-payment-mode="plazos">
+                                    Plazos
+                                </button>
+                            </div>
                         </div>
 
-                        <div id="financing-options" class="hidden grid grid-cols-2 gap-4 mb-8 bg-gray-50 p-6 rounded-[2rem] border border-gray-200">
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Frecuencia</label>
-                                <select id="pay-freq" class="w-full bg-white border-none rounded-xl p-3 text-sm font-bold shadow-sm outline-none">
-                                    <option value="mensual">Mensual</option>
-                                    <option value="quincenal">Quincenal</option>
-                                    <option value="semanal">Semanal</option>
-                                </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-gray-400 uppercase ml-1">Plazo</label>
-                                <select id="pay-months" class="w-full bg-white border-none rounded-xl p-3 text-sm font-bold shadow-sm outline-none">
-                                    <option value="3">3 Meses</option>
-                                    <option value="6" selected>6 Meses</option>
-                                    <option value="12">12 Meses</option>
-                                </select>
-                            </div>
-                            <div class="col-span-2 bg-cyan-600 text-white p-4 rounded-2xl flex justify-between items-center shadow-lg shadow-cyan-200 mt-2">
-                                <div>
-                                    <p class="text-[10px] font-bold opacity-80 uppercase">Cuota Estimada</p>
-                                    <p id="calc-cuota" class="text-2xl font-black">$0.00</p>
+                        <div id="financing-options" class="hidden p-3 bg-gray-50 rounded-lg border mb-4">
+                            <p class="text-gray-700 font-semibold mb-3 text-center">Opciones de Financiamiento:</p>
+                            
+                            <div class="flex space-x-4 mb-3">
+                                <div class="w-1/2">
+                                    <label class="block text-xs font-medium text-gray-700 mb-1">Frecuencia</label>
+                                    <select id="payment-frequency" class="w-full p-2 border border-gray-300 rounded-lg text-sm bg-white">
+                                        <option value="semanal">Semanal</option>
+                                        <option value="quincenal">Quincenal</option>
+                                        <option value="mensual" selected>Mensual</option>
+                                    </select>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-[10px] font-bold opacity-80 uppercase">Total Pagos</p>
-                                    <p id="calc-total-pagos" class="text-xl font-black">0</p>
+                                <div class="w-1/2">
+                                    <label class="block text-xs font-medium text-gray-700 mb-1">Duración (Meses)</label>
+                                    <select id="payment-months" class="w-full p-2 border border-gray-300 rounded-lg text-sm bg-white">
+                                        <option value="3">3 Meses</option>
+                                        <option value="6" selected>6 Meses</option>
+                                        <option value="9">9 Meses</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="space-y-6 mb-8">
-                            ${uniqueAlm.length > 1 ? `<div><p class="text-xs font-black text-gray-400 mb-3 uppercase tracking-widest">Capacidad</p><div class="flex gap-2">${uniqueAlm.map((a,i)=>`<button class="variant-opt-btn border-2 border-gray-100 px-5 py-2 rounded-xl font-bold text-sm hover:border-cyan-600 transition" data-type="alm" data-val="${a}" data-selected="${i===0}">${a}</button>`).join('')}</div></div>`:''}
-                            ${uniqueCol.length > 1 ? `<div><p class="text-xs font-black text-gray-400 mb-3 uppercase tracking-widest">Color</p><div class="flex gap-2">${uniqueCol.map((c,i)=>`<button class="variant-opt-btn border-2 border-gray-100 px-5 py-2 rounded-xl font-bold text-sm hover:border-cyan-600 transition" data-type="col" data-val="${c}" data-selected="${i===0}">${c}</button>`).join('')}</div></div>`:''}
-                        </div>
-
-                        <div class="border-t pt-6 mb-8">
-                            <p id="price-label" class="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Precio al Contado</p>
-                            <div class="flex items-baseline gap-2">
-                                <span id="modal-price" class="text-5xl font-black text-cyan-600 tracking-tighter">$0.00</span>
-                                <span class="text-gray-400 font-bold text-sm">inc. IVA</span>
+                            <div class="bg-white p-3 rounded-md border-dashed border-gray-300 border text-center">
+                                <p class="text-sm font-medium text-gray-600">Total a Pagar: <strong id="financing-total-amount" class="text-red-500">$0.00</strong></p>
+                                <p class="text-lg font-bold text-green-600">Cuota: <strong id="financing-installment-amount">$0.00</strong></p>
+                                <p class="text-xs text-gray-400">Total de Pagos: <span id="financing-total-payments">0</span></p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4">
-                            <div class="flex items-center bg-gray-100 rounded-2xl p-1">
-                                <button id="qty-min" class="w-10 h-10 font-bold text-gray-500 hover:text-black">-</button>
-                                <input id="qty-num" type="number" value="1" class="w-12 bg-transparent text-center font-black text-lg outline-none">
-                                <button id="qty-plus" class="w-10 h-10 font-bold text-gray-500 hover:text-black">+</button>
+
+                        <div class="my-4 border-t pt-4">
+                            <span class="text-sm font-semibold text-gray-700" id="price-label">Precio al Contado:</span>
+                            <span id="modal-price" class="text-4xl font-extrabold text-cyan-600 block">
+                                $${selectedVariant.priceWithTax.toFixed(2)}
+                            </span>
+                            <span class="text-sm font-semibold text-gray-500">
+                                (Precio final con IVA)
+                            </span>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6 w-full">
+                            <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden w-full sm:w-auto">
+                                <button id="qty-minus" class="p-2 text-gray-600 hover:bg-gray-100 transition-colors">-</button>
+                                <input id="qty-input" type="number" value="1" min="1" max="${selectedVariant.stock}" class="w-12 text-center border-none focus:outline-none p-2">
+                                <button id="qty-plus" class="p-2 text-gray-600 hover:bg-gray-100 transition-colors">+</button>
                             </div>
-                            <a id="wa-btn" href="#" target="_blank" class="flex-1 bg-green-500 text-white font-black py-4 rounded-2xl text-center hover:bg-green-600 transition shadow-xl shadow-green-100 flex items-center justify-center gap-2">
-                                <i class="fab fa-whatsapp text-xl"></i> COMPRAR POR WHATSAPP
+                            <a id="modal-whatsapp-link" href="https://wa.me/593967427594?text=${encodeURIComponent(initialWhatsappMessage)}" class="w-full text-center bg-green-500 text-white font-bold py-3 rounded-lg hover:bg-green-600 transition-colors">
+                                COMPRAR POR WHATSAPP
                             </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="mt-16 border-t border-gray-100 pt-10">
-                    <div class="flex gap-8 mb-6 border-b border-gray-100">
-                        <button class="tab-btn pb-4 border-b-4 border-cyan-600 text-cyan-600 font-black uppercase tracking-widest text-sm" data-tab="desc">Descripción</button>
-                        <button class="tab-btn pb-4 border-b-4 border-transparent text-gray-400 font-black uppercase tracking-widest text-sm" data-tab="specs">Ficha Técnica</button>
-                    </div>
-                    <div id="tab-pane" class="text-gray-500 font-medium leading-relaxed max-w-3xl">
-                        ${product.longDescription}
+                        
+                        <div class="border-b border-gray-200 mt-6">
+                            <nav class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4" aria-label="Tabs">
+                                <button id="tab-desc" class="tab-btn border-b-2 border-cyan-600 text-cyan-600 font-bold py-2 px-4 text-left w-full sm:w-auto transition-colors duration-200">
+                                    DESCRIPCIÓN
+                                </button>
+                                <button id="tab-specs" class="tab-btn border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 py-2 px-4 text-left w-full sm:w-auto transition-colors duration-200">
+                                    ESPECIFICACIÓN
+                                </button>
+                            </nav>
+                        </div>
+                        
+                        <div id="tab-content-desc" class="pt-4 text-gray-700 text-sm">
+                            </div>
+                        <div id="tab-content-specs" class="pt-4 text-gray-700 text-sm hidden">
+                            </div>
                     </div>
                 </div>
             `;
+            
+            // *************************************************************
+            // * REFERENCIAS DE ELEMENTOS Y LÓGICA DE INTERACCIÓN
+            // *************************************************************
+            
+            // Elementos de opciones de producto
+            const qtyInput = document.getElementById('qty-input');
+            const modalPriceElement = document.getElementById('modal-price');
+            const modalStockElement = document.getElementById('modal-stock');
+            const whatsappLinkElement = document.getElementById('modal-whatsapp-link');
+            const priceLabelElement = document.getElementById('price-label');
 
-            setupModalLogic(product);
-            document.getElementById('info-modal').classList.remove('hidden');
-        }
+            // Elementos de financiamiento
+            const financingOptions = document.getElementById('financing-options');
+            const paymentFrequencySelect = document.getElementById('payment-frequency');
+            const paymentMonthsSelect = document.getElementById('payment-months');
+            const financingTotalAmount = document.getElementById('financing-total-amount');
+            const financingInstallmentAmount = document.getElementById('financing-installment-amount');
+            const financingTotalPayments = document.getElementById('financing-total-payments');
 
-        function setupModalLogic(product) {
-            const updateUI = () => {
-                const alm = document.querySelector('[data-type="alm"][data-selected="true"]')?.dataset.val || product.variants[0].almacenamiento;
-                const col = document.querySelector('[data-type="col"][data-selected="true"]')?.dataset.val || product.variants[0].color;
-                const qty = parseInt(document.getElementById('qty-num').value);
+            // Elementos de pestañas
+            const tabDescBtn = document.getElementById('tab-desc');
+            const tabSpecsBtn = document.getElementById('tab-specs');
+            const tabContentDesc = document.getElementById('tab-content-desc');
+            const tabContentSpecs = document.getElementById('tab-content-specs');
+
+
+            // Estado actual del modal
+            let currentPaymentMode = 'contado';
+
+            // Función principal para actualizar precio, stock y mensaje de WhatsApp
+            function updateModalUI() {
+                // 1. Obtener la variante de producto seleccionada
+                const currentSelection = {
+                    almacenamiento: document.querySelector('.option-btn[data-option-type="almacenamiento"][data-selected="true"]')?.getAttribute('data-option-value') || uniqueOptions.almacenamiento[0],
+                    ram: document.querySelector('.option-btn[data-option-type="ram"][data-selected="true"]')?.getAttribute('data-option-value') || uniqueOptions.ram[0],
+                    color: document.querySelector('.option-btn[data-option-type="color"][data-selected="true"]')?.getAttribute('data-option-value') || uniqueOptions.color[0]
+                };
+
+                const matchedVariant = product.variants.find(v => 
+                    v.almacenamiento === currentSelection.almacenamiento &&
+                    v.ram === currentSelection.ram &&
+                    v.color === currentSelection.color
+                );
                 
-                const variant = product.variants.find(v => v.almacenamiento === alm && v.color === col) || product.variants[0];
-                const basePrice = variant.costoProveedor * variant.margenContado;
-                
-                // Actualizar Stock
-                document.getElementById('modal-stock').innerText = variant.stock;
+                let basePrice = matchedVariant ? matchedVariant.priceWithTax : 0;
+                const quantity = parseInt(qtyInput.value) || 1;
 
-                // Estilos de botones de modo
-                document.querySelectorAll('.payment-mode-btn').forEach(b => {
-                    const active = b.dataset.paymentMode === currentPaymentMode;
-                    b.className = `payment-mode-btn px-6 py-2.5 rounded-xl font-black text-xs transition-all duration-300 ${active ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-100' : 'bg-transparent text-gray-500 hover:bg-gray-200'}`;
-                });
-
-                const priceLabel = document.getElementById('price-label');
-                const finArea = document.getElementById('financing-options');
-                let waMsg = "";
-
-                if (currentPaymentMode === 'contado') {
-                    finArea.classList.add('hidden');
-                    priceLabel.innerText = "Precio al Contado";
-                    const total = (basePrice * qty).toFixed(2);
-                    document.getElementById('modal-price').innerText = `$${total}`;
-                    waMsg = `Hola! Quiero comprar de contado ${qty} ${product.name} (${alm}). Total: $${total}`;
-                } else {
-                    finArea.classList.remove('hidden');
-                    priceLabel.innerText = "Total Financiado";
-                    const months = document.getElementById('pay-months').value;
-                    const freq = document.getElementById('pay-freq').value;
-                    const calc = calculatePayment(basePrice * qty, months, freq, variant.tasaAnual);
+                // 2. Actualizar Stock y Cantidad
+                if (matchedVariant) {
+                    modalStockElement.textContent = matchedVariant.stock;
+                    qtyInput.max = matchedVariant.stock;
                     
-                    document.getElementById('modal-price').innerText = `$${calc.totalAmountDue}`;
-                    document.getElementById('calc-cuota').innerText = `$${calc.installmentAmount}`;
-                    document.getElementById('calc-total-pagos').innerText = calc.totalPayments;
-                    waMsg = `Hola! Me interesa financiar ${qty} ${product.name} (${alm}) a ${months} meses. Pago ${freq}.`;
+                    if (quantity > matchedVariant.stock) {
+                        qtyInput.value = matchedVariant.stock > 0 ? 1 : 0;
+                    } else if (quantity === 0 && matchedVariant.stock > 0) {
+                        qtyInput.value = 1;
+                    }
+                } else {
+                    modalStockElement.textContent = '0';
+                    qtyInput.max = 0;
+                    qtyInput.value = 0;
                 }
-                document.getElementById('wa-btn').href = `https://wa.me/593967427594?text=${encodeURIComponent(waMsg)}`;
-            };
+                
+                // 3. Lógica de Financiamiento
+                let finalPriceDisplay = '';
+                let whatsappMessage = '';
+                
+                if (currentPaymentMode === 'contado') {
+                    // MODO CONTADO
+                    financingOptions.classList.add('hidden');
+                    priceLabelElement.textContent = `Precio al Contado (${quantity} unid):`;
+                    
+                    const totalPrice = basePrice * quantity;
+                    finalPriceDisplay = totalPrice.toFixed(2);
+                    
+                    whatsappMessage = `Hola, me interesa comprar ${quantity} unidad(es) del ${product.name} (${currentSelection.almacenamiento}, ${currentSelection.ram}, ${currentSelection.color}). Modalidad: Contado. Precio total: $${totalPrice.toFixed(2)}.`;
+                    
+                } else {
+                    // MODO PLAZOS
+                    financingOptions.classList.remove('hidden');
+                    priceLabelElement.textContent = `Precio Total Financiado (${quantity} unid):`;
+                    
+                    // Cálculo de Plazos por rango de precio
+                    const totalProductPrice = basePrice * quantity;
+                    const variantBasePrice = matchedVariant ? matchedVariant.price : 0;
+                    const frequency = paymentFrequencySelect.value;
 
-            // Eventos
-            document.querySelectorAll('.payment-mode-btn').forEach(b => b.onclick = (e) => { currentPaymentMode = e.target.dataset.paymentMode; updateUI(); });
-            document.querySelectorAll('.variant-opt-btn').forEach(b => b.onclick = (e) => {
-                document.querySelectorAll(`[data-type="${e.target.dataset.type}"]`).forEach(btn => {
-                    btn.dataset.selected = "false";
-                    btn.classList.remove('border-cyan-600', 'bg-cyan-50', 'text-cyan-600');
+                    // Mostrar/ocultar opción de 9 meses según el precio base (sin IVA)
+                    const option9m = paymentMonthsSelect.querySelector('option[value="9"]');
+                    if (option9m) {
+                        const allow9m = variantBasePrice <= 150;
+                        option9m.disabled = !allow9m;
+                        option9m.hidden = !allow9m;
+                        if (!allow9m && paymentMonthsSelect.value === '9') {
+                            paymentMonthsSelect.value = '6';
+                        }
+                    }
+
+                    const months = paymentMonthsSelect.value;
+                    const calculation = calculatePayment(totalProductPrice, variantBasePrice, months, frequency);
+
+                    if (calculation) {
+                        finalPriceDisplay = calculation.totalAmountDue;
+                        financingTotalAmount.textContent = `$${calculation.totalAmountDue}`;
+                        financingInstallmentAmount.textContent = `$${calculation.installmentAmount} / ${frequency}`;
+                        financingTotalPayments.textContent = calculation.totalPayments;
+                        whatsappMessage = `Hola, me interesa financiar ${quantity} unidad(es) del ${product.name} (${currentSelection.almacenamiento}, ${currentSelection.ram}, ${currentSelection.color}). Modalidad: Plazos (${months} meses, pago ${frequency}). Cuota: $${calculation.installmentAmount}. Precio Total: $${calculation.totalAmountDue}.`;
+                    } else {
+                        finalPriceDisplay = totalProductPrice.toFixed(2);
+                        financingTotalAmount.textContent = '-';
+                        financingInstallmentAmount.textContent = '-';
+                        financingTotalPayments.textContent = '-';
+                        whatsappMessage = `Hola, me interesa conocer opciones de financiamiento para ${quantity} unidad(es) del ${product.name} (${currentSelection.almacenamiento}, ${currentSelection.ram}, ${currentSelection.color}).`;
+                    }
+                }
+
+                // 4. Actualizar UI y Link de WhatsApp
+                modalPriceElement.textContent = `$${finalPriceDisplay}`;
+                whatsappLinkElement.href = `https://wa.me/593967427594?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                // Asegurar que el botón de WhatsApp esté activo si hay stock
+                if (parseInt(qtyInput.value) > 0) {
+                    whatsappLinkElement.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    whatsappLinkElement.classList.add('bg-green-500', 'hover:bg-green-600');
+                } else {
+                    whatsappLinkElement.classList.add('bg-gray-400', 'cursor-not-allowed');
+                    whatsappLinkElement.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    whatsappLinkElement.href = '#';
+                }
+            }
+
+
+            // *************************************************************
+            // * MANEJADORES DE EVENTOS
+            // *************************************************************
+
+            // 1. Manejador de botones de modo de pago (Contado/Plazos)
+            document.querySelectorAll('.payment-mode-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const mode = e.target.getAttribute('data-payment-mode');
+                    currentPaymentMode = mode;
+                    
+                    // Actualizar estilos
+                    document.querySelectorAll('.payment-mode-btn').forEach(btn => {
+                        btn.classList.remove('bg-cyan-600', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+                    });
+                    e.target.classList.add('bg-cyan-600', 'text-white');
+                    e.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+                    
+                    updateModalUI();
                 });
-                e.target.dataset.selected = "true";
-                e.target.classList.add('border-cyan-600', 'bg-cyan-50', 'text-cyan-600');
-                updateUI();
             });
 
-            document.getElementById('qty-plus').onclick = () => { document.getElementById('qty-num').value++; updateUI(); };
-            document.getElementById('qty-min').onclick = () => { if(document.getElementById('qty-num').value > 1) { document.getElementById('qty-num').value--; updateUI(); } };
-            document.getElementById('pay-freq').onchange = updateUI;
-            document.getElementById('pay-months').onchange = updateUI;
+            // 2. Manejador de opciones de financiamiento
+            paymentFrequencySelect.addEventListener('change', updateModalUI);
+            paymentMonthsSelect.addEventListener('change', updateModalUI);
 
-            // Pestañas
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.onclick = (e) => {
-                document.querySelectorAll('.tab-btn').forEach(b => {
-                    b.classList.remove('border-cyan-600', 'text-cyan-600');
-                    b.classList.add('border-transparent', 'text-gray-400');
-                });
-                e.target.classList.add('border-cyan-600', 'text-cyan-600');
-                e.target.classList.remove('border-transparent', 'text-gray-400');
-                document.getElementById('tab-pane').innerHTML = e.target.dataset.tab === 'desc' ? product.longDescription : `<ul class="list-disc ml-5 space-y-2">${product.specs.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+            // 3. Manejador de cantidad (Qty)
+            document.getElementById('qty-plus').addEventListener('click', () => {
+                let currentVal = parseInt(qtyInput.value);
+                if (currentVal < parseInt(qtyInput.max)) {
+                    qtyInput.value = currentVal + 1;
+                    updateModalUI();
+                }
+            });
+            document.getElementById('qty-minus').addEventListener('click', () => {
+                let currentVal = parseInt(qtyInput.value);
+                if (currentVal > 1) {
+                    qtyInput.value = currentVal - 1;
+                    updateModalUI();
+                }
+            });
+            qtyInput.addEventListener('change', updateModalUI); 
+            qtyInput.addEventListener('input', () => { // Manejar el input directo
+                if (parseInt(qtyInput.value) > parseInt(qtyInput.max)) {
+                    qtyInput.value = qtyInput.max;
+                }
+                updateModalUI();
             });
 
-            updateUI();
+            // 4. Manejador de selección de variante (RAM, Almacenamiento, Color)
+            document.querySelectorAll('.option-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const optionType = e.target.getAttribute('data-option-type');
+                    
+                    document.querySelectorAll(`.option-btn[data-option-type="${optionType}"]`).forEach(btn => {
+                        btn.removeAttribute('data-selected');
+                        btn.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                        btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'border-gray-300');
+                    });
+                    
+                    e.target.setAttribute('data-selected', 'true');
+                    e.target.classList.add('bg-cyan-600', 'text-white', 'border-cyan-600');
+                    e.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100', 'border-gray-300');
+                    
+                    updateModalUI();
+                });
+            });
+
+
+            // 5. Lógica para pestañas
+            function showTabContent(tabId) {
+                // 1. Limpiar clases y ocultar todos los contenidos
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('border-cyan-600', 'text-cyan-600', 'font-bold');
+                    btn.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                });
+                tabContentDesc.classList.add('hidden');
+                tabContentSpecs.classList.add('hidden');
+                
+                // 2. Aplicar clases al botón seleccionado y mostrar el contenido correspondiente
+                const selectedBtn = document.getElementById(tabId);
+                selectedBtn.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                selectedBtn.classList.add('border-cyan-600', 'text-cyan-600', 'font-bold');
+                
+                if (tabId === 'tab-desc') {
+                    // Cargar contenido de Descripción
+                    const formattedDescription = product.longDescription.replace(/\n/g, '<br>');
+                    tabContentDesc.innerHTML = `<p>${formattedDescription}</p>`;
+                    tabContentDesc.classList.remove('hidden');
+                } else if (tabId === 'tab-specs') {
+                    // Cargar contenido de Especificación
+                    const specsList = product.specs.map(spec => `<li class="mb-1">${spec}</li>`).join('');
+                    tabContentSpecs.innerHTML = `<ul class="list-disc list-inside space-y-1">${specsList}</ul>`;
+                    tabContentSpecs.classList.remove('hidden');
+                }
+            }
+
+            tabDescBtn.addEventListener('click', () => showTabContent('tab-desc'));
+            tabSpecsBtn.addEventListener('click', () => showTabContent('tab-specs'));
+
+            // *************************************************************
+            // * INICIALIZACIÓN
+            // *************************************************************
+
+            // Inicializar la pestaña y la UI
+            showTabContent('tab-desc');
+            updateModalUI(); 
+            modal.classList.remove('hidden');
         }
 
-        // Navegación General
-        function showPage(id) {
-            document.querySelectorAll('.content-page').forEach(p => p.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            document.getElementById('mobile-menu').classList.add('hidden');
-            window.scrollTo(0,0);
+        // Función para ocultar el modal
+        function hideModal() {
+            document.getElementById('info-modal').classList.add('hidden');
         }
 
-        document.getElementById('btn-inicio').onclick = () => showPage('page-inicio');
-        document.getElementById('m-btn-inicio').onclick = () => showPage('page-inicio');
-        document.getElementById('btn-catalogo').onclick = () => showPage('page-catalogo');
-        document.getElementById('m-btn-catalogo').onclick = () => showPage('page-catalogo');
-        document.getElementById('btn-ir-catalogo').onclick = () => showPage('page-catalogo');
-        document.getElementById('btn-contacto').onclick = () => showPage('page-contacto');
-        document.getElementById('menu-toggle').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
-        document.getElementById('close-modal').onclick = () => document.getElementById('info-modal').classList.add('hidden');
+        // Lógica para el menú de navegación móvil 
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Cierra el menú móvil al hacer clic en un enlace de navegación
+            document.querySelectorAll('#mobile-menu button, #mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Función para cambiar de página
+        function showPage(pageId) {
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        // Manejadores de eventos para la navegación
+        document.getElementById('btn-inicio').addEventListener('click', () => {
+            showPage('page-inicio');
+        });
+        document.getElementById('btn-catalogo').addEventListener('click', () => {
+            showPage('page-catalogo');
+            updateCatalog();
+        });
+        document.getElementById('btn-nosotros').addEventListener('click', () => {
+            showPage('page-nosotros');
+        });
+        document.getElementById('btn-contacto').addEventListener('click', () => {
+            showPage('page-contacto');
+        });
+        document.getElementById('btn-ir-catalogo').addEventListener('click', () => {
+            showPage('page-catalogo');
+            updateCatalog();
+        });
+
+        // Manejador de evento para cerrar el modal
+        document.getElementById('close-modal').addEventListener('click', hideModal);
+        document.getElementById('info-modal').addEventListener('click', (event) => {
+            // Cerrar si se hace click fuera del contenido del modal
+            if (event.target === event.currentTarget) {
+                hideModal();
+            }
+        });
+
+        // Función para actualizar el catálogo con búsqueda y ordenamiento
+        function updateCatalog() {
+            const searchInput = document.getElementById('search-input');
+            const sortOrderSelect = document.getElementById('sort-order');
+            
+            if (!searchInput || !sortOrderSelect) return; // Asegurar que los elementos existan
+
+            const searchTerm = searchInput.value.toLowerCase();
+            const sortOrder = sortOrderSelect.value;
+
+            let filteredProducts = products.filter(product => {
+                const name = product.name.toLowerCase();
+                const shortDescription = product.shortDescription.toLowerCase();
+                return name.includes(searchTerm) || shortDescription.includes(searchTerm);
+            });
+
+            if (sortOrder === 'name') {
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortOrder === 'price') {
+                filteredProducts.sort((a, b) => a.variants[0].priceWithTax - b.variants[0].priceWithTax);
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        // Manejadores de eventos para búsqueda y ordenamiento
+        document.getElementById('search-input').addEventListener('input', updateCatalog);
+        document.getElementById('sort-order').addEventListener('change', updateCatalog);
+            
+        // Manejador de evento para el formulario de contacto
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const subject = "Reclamo o sugerencia de " + name;
+            const body = `Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${message}`;
+            const mailtoLink = `mailto:moormixdigital@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Abrir la aplicación de email del usuario
+            window.location.href = mailtoLink;
+
+            // Mostrar un mensaje de confirmación
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = "Tu mensaje ha sido enviado a tu cliente de correo para su confirmación.";
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('text-green-600');
+            
+            // Limpiar el formulario después de un breve retraso
+            setTimeout(() => {
+                document.getElementById('contact-form').reset();
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Inicializar la aplicación al cargar
         document.addEventListener('DOMContentLoaded', () => {
-            renderProducts(products);
+            showPage('page-inicio');
+            updateCatalog();
+            
         });
     </script>
-</body>
+    </body>
 </html>
